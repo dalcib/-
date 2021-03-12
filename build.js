@@ -24,6 +24,7 @@ require('esbuild')
     sourcemap: true,
     plugins: [],
     incremental: !prod,
+    mainFields: ['module', 'main'],
     publicPath: '/',
     watch: prod
       ? false
@@ -43,6 +44,6 @@ require('esbuild')
         }) //Interagierende-Systeme/openurl2
         .catch(() => process.exit(1))
     }
-    console.log(error ? error : `[servor] web-server started at localhost:${port}`)
+    console.log(error ? error : !prod ? `[servor] webserver started at localhost:${port}` : '')
   })
   .catch(() => process.exit(1))
